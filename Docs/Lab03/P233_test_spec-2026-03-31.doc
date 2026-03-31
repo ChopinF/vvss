@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><title>testspec Proiect233 - hair3541_WBT</title>
+<link type="text/css" rel="stylesheet" href="https://www.scs.ubbcluj.ro/testlink/gui/themes/default/css/tl_documents.css" />
+<style type="text/css" media="print">.notprintable { display:none;}</style>
+</head>
+<body>
+<div>
+<div style="float:right;">TestLink Community [configure $tlCfg-&gt;document_generator-&gt;company_name]</div>
+<div>&nbsp;</div><hr />
+<p style="text-align: center;"><img alt="TestLink logo" title="configure using $tlCfg->document_generator->company_logo"  width= height= src="https://www.scs.ubbcluj.ro/testlink/gui/themes/default/images/tl-logo-transparent-25.png" /></p></div>
+<div class="doc_title"><p>Test Specification</p></div>
+<div class="doc_title" style="text-align:left;margin: auto;"><p>Test Project: Proiect233<br/>Test Suite: Proiect233 - hair3541_WBT</p></div>
+<div class="summary"><p id="printedby">Printed by TestLink on 31/03/2026</p></div>
+<div class="pagefooter" id="copyright">2012 &copy; TestLink Community</div>
+<h1 class="general" style="page-break-before: always">Table Of Contents</h1><div class="toc"><p style="padding-left: 20px;"><b><a href="#toc_1">1.hair3541_WBT</a></b></p>
+<p style="padding-left: 45px;"><a href="#toc_tc29266">P233-58: TC01_ConsumaStoc_Valid_StocSuficient</a></p><p style="padding-left: 45px;"><a href="#toc_tc29269">P233-59: TC02_ConsumaStoc_Invalid_StocInsuficient</a></p></div><h1 class="doclevel" >Scope</h1>
+<div class="txtlevel"><p>Proiect de testare pentru studentii din grupa 233.</p></div>
+ <br/><a name='toc_1'></a>
+<h1 class='doclevel'>1.Test Suite : hair3541_WBT</h1>
+<div><p>Se testează metoda de consumare a stocului (consuma) din clasa StocService folosind tehnici de testare White-Box</p>
+</div><a name="toc_tc29266"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case P233-58: TC01_ConsumaStoc_Valid_StocSuficient&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">jojoseph</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Testarea execuției metodei consuma pe calea de succes, atunci c&acirc;nd cantitatea disponibilă &icirc;n stoc este suficientă pentru a acoperi necesarul tuturor ingredientelor din rețetă.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>Sistemul este pornit și inițializat. &Icirc;n repository-ul de stocuri există ingredientul &quot;cafea_macinata&quot; cu cantitatea de 100.0 unități.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Se apelează metoda consuma(reteta) folosind un obiect Reteta valid care necesită ingredientul: &quot;cafea_macinata&quot; cu o cantitate de 15.0 unități.</p>
+</td><td><p>Metoda parcurge buclele interioare și se execută p&acirc;nă la capăt cu succes. Stocul pentru &quot;cafea_macinata&quot; este actualizat și salvat &icirc;n repository cu valoarea rămasă de 85.0 unități. Sistemul NU returnează nicio excepție.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">Medium</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > name of the autotest class:</td><td  colspan = "3" >drinkshop.service.StocServiceTest</td></tr>
+<tr><td > name of the test method:</td><td  colspan = "3" >drinkshop.service.StocServiceTest#testConsumaStocValidStocSuficient</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">hair3541_F02:  ConsumaStoc [Version : 1]<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">&nbsp;None<br/></td></tr>
+</table>
+</div>
+<a name="toc_tc29269"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case P233-59: TC02_ConsumaStoc_Invalid_StocInsuficient&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">jojoseph</td></tr>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Testarea execuției metodei consuma pe calea de eroare, forț&acirc;nd intrarea &icirc;n prima instrucțiune decizională (if (!areSuficient(reteta))) din cauza lipsei de stoc.</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>Sistemul este pornit și inițializat. &Icirc;n repository-ul de stocuri există ingredientul &quot;cafea_macinata&quot; cu cantitatea de doar 5.0 unități.</p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Step actions:</span></td><td><span class="label">Expected Results:</span></td></tr><tr><td width="5">1</td><td><p>Se apelează metoda consuma(reteta) folosind un obiect Reteta care necesită ingredientul: &quot;cafea_macinata&quot; cu o cantitate de 15.0 unități (cantitate strict mai mare dec&acirc;t cea din stoc).</p>
+</td><td><p>Sistemul oprește execuția imediat și aruncă o excepție de tipul IllegalStateException cu mesajul <em>&quot;Stoc insuficient pentru rețeta.&quot;</em>. Stocul din repository răm&acirc;ne intact (5.0 unități), nicio cantitate nefiind consumată.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">Medium</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > name of the autotest class:</td><td  colspan = "3" >drinkshop.service.StocServiceTest</td></tr>
+<tr><td > name of the test method:</td><td  colspan = "3" >drinkshop.service.StocServiceTest#testConsumaStocInvalidStocInsuficient</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">hair3541_F02:  ConsumaStoc [Version : 1]<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">&nbsp;None<br/></td></tr>
+</table>
+</div>
+
+</body>
+</html>
