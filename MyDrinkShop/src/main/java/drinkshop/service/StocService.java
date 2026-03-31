@@ -52,29 +52,35 @@ public class StocService {
     }
 
     public void consuma(Reteta reteta) {
+        // NODE 1
         if (!areSuficient(reteta)) {
+            // NODE 2
             throw new IllegalStateException("Stoc insuficient pentru rețeta.");
         }
 
+        // NODE 3
         for (IngredientReteta e : reteta.getIngrediente()) {
+            // NODE 4
             String ingredient = e.getDenumire();
             double necesar = e.getCantitate();
-
             List<Stoc> ingredienteStoc = stocRepo.findAll().stream()
                     .filter(s -> s.getIngredient().equalsIgnoreCase(ingredient))
                     .toList();
-
             double ramas = necesar;
 
+            // NODE 5
             for (Stoc s : ingredienteStoc) {
-                if (ramas <= 0) break;
+                // NODE 6
+                if (ramas <= 0)
+                    // NODE 7
+                    break;
 
+                // NODE 8
                 double deScazut = Math.min(s.getCantitate(), ramas);
                 s.setCantitate((int)(s.getCantitate() - deScazut));
                 ramas -= deScazut;
-
                 stocRepo.update(s);
             }
         }
-    }
+    } // NODE 9
 }
