@@ -5,6 +5,7 @@ import drinkshop.domain.Reteta;
 import drinkshop.domain.Stoc;
 import drinkshop.repository.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -63,9 +64,12 @@ public class StocService {
             // NODE 4
             String ingredient = e.getDenumire();
             double necesar = e.getCantitate();
-            List<Stoc> ingredienteStoc = stocRepo.findAll().stream()
-                    .filter(s -> s.getIngredient().equalsIgnoreCase(ingredient))
-                    .toList();
+            List<Stoc> ingredienteStoc = new ArrayList<>();
+            for (Stoc stoc : stocRepo.findAll()) {
+                if (stoc.getIngredient().equalsIgnoreCase(ingredient)) {
+                    ingredienteStoc.add(stoc);
+                }
+            }
             double ramas = necesar;
 
             // NODE 5
