@@ -6,14 +6,14 @@
   <properties>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
-    <javafx.version>21</javafx.version>
+    <javafx.version>22</javafx.version>
     <junit.version>5.10.0</junit.version>
   </properties>
   <dependencies>
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-controls</artifactId>
-      <version>${javafx.version}</version>
+      <version>22.0.2</version>
     </dependency>
 
     <dependency>
@@ -50,6 +50,20 @@
           <artifactId>controlsfx</artifactId>
           <version>11.0.1</version>
       </dependency>
+
+      <!-- mockito -->
+      <dependency>
+          <groupId>org.mockito</groupId>
+          <artifactId>mockito-core</artifactId>
+          <version>2.23.0</version>
+          <scope>test</scope>
+      </dependency>
+      <dependency>
+          <groupId>org.mockito</groupId>
+          <artifactId>mockito-junit-jupiter</artifactId>
+          <version>2.23.0</version>
+          <scope>test</scope>
+      </dependency>
   </dependencies>
 
 
@@ -70,6 +84,20 @@
             <version>2.22.1</version>
         </plugin>
 
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.2.5</version>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.13.0</version>
+            <configuration>
+                <!-- Use the project properties (set to 17 above) so Stream.toList() and other Java 16+ APIs are available -->
+                <release>${maven.compiler.source}</release>
+            </configuration>
+        </plugin>
     </plugins>
     </build>
 </project>

@@ -5,6 +5,7 @@ import drinkshop.domain.Product;
 import drinkshop.domain.TipBautura;
 import drinkshop.repository.AbstractRepository;
 import drinkshop.repository.Repository;
+import drinkshop.service.validator.ProductValidator;
 import drinkshop.service.validator.ValidationException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -30,7 +31,7 @@ class ProductServiceTest {
                 return entity.getId();
             }
         };
-        productService = new ProductService(testRepo);
+        productService = new ProductService(testRepo, new ProductValidator());
     }
 
     // ==========================================
